@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,7 +17,7 @@ public class JobDTO {
         private Long id;
         private String jobTitle;
         private String company;
-        private List<Applicant> applicants;
+        private List<ApplicantDTO> applicants;
         private String about;
         private String experiences;
         private String jobType;
@@ -31,7 +33,10 @@ public class JobDTO {
                 this.id,
                 this.jobTitle,
                 this.company,
-                this.applicants,
+                this.applicants != null ? this.applicants.stream()
+                        .map((x)->x.toEntity()) // Correctly map to entities
+                        .toList() // Collect to a list
+                        : null,
                 this.about,
                 this.experiences,
                 this.jobType,

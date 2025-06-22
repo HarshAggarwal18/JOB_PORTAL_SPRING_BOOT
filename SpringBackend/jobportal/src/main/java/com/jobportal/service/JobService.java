@@ -1,5 +1,6 @@
 package com.jobportal.service;
 
+import com.jobportal.dto.ApplicantDTO;
 import com.jobportal.dto.JobDTO;
 import com.jobportal.exception.JobPortalException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import java.util.List;
 
 
 public interface JobService {
+
+//    public void applyJob(Long id, ApplicantDTO applicantDTO)throws  JobPortalException {
+//    }
 
     JobDTO postJob(JobDTO jobDTO) throws Exception;
 
